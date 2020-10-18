@@ -1,6 +1,6 @@
 #include "geodesics_ptp_coalescence.cuh"
 
-#include "che_off.h"
+#include "che_obj.h"
 
 #include <cublas_v2.h>
 #include <cassert>
