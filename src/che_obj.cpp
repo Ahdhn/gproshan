@@ -38,7 +38,7 @@ void che_obj::read_file(const string & file)
 
 	while(is.getline(line, sizeof(line)))
 	{
-		stringstream ss(line);
+		std::stringstream ss(line);
 
 		ss >> key;
 		if(key == "") continue;

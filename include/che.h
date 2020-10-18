@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <string>
+#include<sstream>
 
 #define for_star(he, mesh, v) for(index_t stop = mesh->evt(v), he = mesh->evt(v); he != NIL; he = (he = mesh->ot(prev(he))) != stop ? he : NIL)
 #define for_border(he, mesh, v) for(index_t stop = mesh->evt(v), he = mesh->evt(v); he != NIL; he = (he = mesh->evt(mesh->vt(next(he)))) != stop ? he : NIL)
@@ -111,8 +112,7 @@ class che
 		void merge(const che * mesh, const std::vector<index_t> & com_vertices);
 		void set_head_vertices(index_t * head, const size_t & n);
 		index_t link_intersect(const index_t & v_a, const index_t & v_b);
-		corr_t * edge_collapse(const index_t *const & sort_edges, const vertex *const & normals);
-		corr_t find_corr(const vertex & v, const vertex & n, const std::vector<index_t> & triangles);
+		
 
 	protected:
 		void delete_me();
