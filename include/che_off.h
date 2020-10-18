@@ -10,19 +10,18 @@ namespace gproshan {
 
 class che_off : public che
 {
-	public:
-		che_off(const std::string & file);
-		che_off(const che_off & mesh);
-		virtual ~che_off();
+   public:
+    che_off(const std::string& file);
+    che_off(const che_off& mesh);
+    virtual ~che_off();
 
-		static void write_file(const che * mesh, const std::string & file);
+    static void write_file(const che* mesh, const std::string& file);
 
-	private:
-		void read_file(const std::string & file);
+   private:
+    void read_file(const std::string& file);
 };
 
 
-} // namespace gproshan
+}  // namespace gproshan
 
-#endif // CHE_OFF_H
-
+#endif  // CHE_OFF_H

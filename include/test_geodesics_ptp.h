@@ -1,7 +1,6 @@
 #ifndef TEST_GEODESICS_PTP_H
 #define TEST_GEODESICS_PTP_H
 
-#include "geodesics.h"
 #include "geodesics_ptp.h"
 
 
@@ -26,8 +25,6 @@ double test_ptp_gpu(che*                        mesh,
 /// Exact geodesics computed using MeshLP
 /// https://github.com/areslp/matlab/tree/master/MeshLP/MeshLP, Geodesics code:
 /// http://code.google.com/p/geodesic/
-
-
 
 
 }  // namespace gproshan
