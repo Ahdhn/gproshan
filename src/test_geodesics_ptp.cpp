@@ -52,10 +52,14 @@ void main_test_geodesics_ptp(const int& nargs, const char** args)
 
     distance_t er = 0;
     for (int i = 0; i < mesh->n_vertices(); ++i) {
-        er += std::abs(dist_gpu[i] - dist_cpu[i]);        
+        er += std::abs(dist_gpu[i] - dist_cpu[i]);
     }
     std::cout << " cpu-gpu error= " << er / distance_t(mesh->n_vertices())
               << std::endl;
+
+
+    che_obj::write_vtk_file(mesh, "geodesic_cpu", dist_cpu);
+    che_obj::write_vtk_file(mesh, "geodesic_gpu", dist_gpu);
 
     // FREE MEMORY
     delete mesh;

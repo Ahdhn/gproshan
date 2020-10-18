@@ -99,4 +99,40 @@ void che_obj::write_file(const che* mesh, const string& file)
 }
 
 
+void che_obj::write_vtk_file(const che*        mesh,
+                             const string&     file,
+                             const distance_t* vertex_attr)
+{
+    ofstream os(file + ".vtk");
+    os << "# vtk DataFile Version 2.5" << endl;
+    os << "Unstructured Grid" << endl;
+    os << "ASCII" << endl;
+    os << "DATASET UNSTRUCTURED_GRID" << endl;
+    os << "POINTS " << mesh->n_vertices() << " double" << endl;
+    for (size_t v = 0; v < mesh->n_vertices(); v++)
+        os << mesh->gt(v).x << " " << mesh->gt(v).y << " " << mesh->gt(v).z
+           << endl;
+    os << "CELLS " << mesh->n_faces() << " " << mesh->n_faces() * (3 + 1)
+       << endl;
+
+    for (index_t he = 0; he < mesh->n_half_edges();) {
+        os << 3 << " ";
+        for (index_t i = 0; i < che::P; i++) {
+            os << mesh->vt(he++) << " ";
+        }
+        os << endl;
+    }
+    os << "CELL_TYPES  " << mesh->n_faces() << endl;
+    for (index_t i = 0; i < mesh->n_faces(); i++) {
+        os << "7" << endl;
+    }
+    os << "POINT_DATA  " << mesh->n_vertices() << endl;
+    os << "SCALARS rad double " << 1 << endl;
+    os << "LOOKUP_TABLE default" << endl;
+    for (size_t v = 0; v < mesh->n_vertices(); v++) {
+        os << vertex_attr[v] << endl;
+    }
+    os.close();
+}
+
 }  // namespace gproshan

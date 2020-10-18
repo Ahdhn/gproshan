@@ -16,6 +16,9 @@ class che_obj : public che
     virtual ~che_obj() = default;
 
     static void write_file(const che* mesh, const std::string& file);
+    static void write_vtk_file(const che*         mesh,
+                               const std::string& file,
+                               const distance_t*  vertex_attr);
 
    private:
     void read_file(const std::string& file);
