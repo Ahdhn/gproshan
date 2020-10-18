@@ -24,8 +24,6 @@ void main_test_geodesics_ptp(const int& nargs, const char** args)
 
     int n_test = nargs == 5 ? atoi(args[4]) : 10;
 
-    gproshan_debug_var(filename);
-
     vector<index_t> source = {0};
 
     che*   mesh = new che_off(filename);
@@ -40,9 +38,12 @@ void main_test_geodesics_ptp(const int& nargs, const char** args)
     double ptp_cpu_time =
         test_ptp_cpu(mesh, source, {limits, sorted_index}, n_test);
 
+    std::cout << "\n ptp_cpu_time= " << ptp_cpu_time << " (s)" << std::endl;
+
     double ptp_gpu_time =
         test_ptp_gpu(mesh, source, {limits, sorted_index}, n_test);
 
+    std::cout << " ptp_gpu_time= " << ptp_gpu_time << " (s)" << std::endl;
 
     // FREE MEMORY
     delete mesh;

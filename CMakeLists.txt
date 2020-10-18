@@ -14,6 +14,8 @@ endif()
 set(CMAKE_CXX_FLAGS "-fopenmp -Wall")
 set(CMAKE_CUDA_FLAGS "-Xcompiler -fopenmp")
 
+# Direct all output to /bin directory
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
 if(CUDA_FOUND)
 	add_definitions(-DGPROSHAN_CUDA)
