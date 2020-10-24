@@ -283,19 +283,4 @@ distance_t update_step(che* mesh, const distance_t* dist, const index_t& he)
     return p;
 }
 
-void normalize_ptp(distance_t* dist, const size_t& n)
-{
-    distance_t max_d = 0;
-
-#pragma omp parallel for reduction(max : max_d)
-    for (index_t v = 0; v < n; v++)
-        if (dist[v] < INFINITY)
-            max_d = max(dist[v], max_d);
-
-#pragma omp parallel for
-    for (index_t v = 0; v < n; v++)
-        dist[v] /= max_d;
-}
-
-
 }  // namespace gproshan

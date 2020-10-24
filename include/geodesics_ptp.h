@@ -54,16 +54,7 @@ void parallel_toplesets_propagation_cpu(const ptp_out_t&            ptp_out,
                                         const std::vector<index_t>& sources,
                                         const toplesets_t&          toplesets);
 
-distance_t farthest_point_sampling_ptp_gpu(che*                  mesh,
-                                           std::vector<index_t>& samples,
-                                           double&               time_fps,
-                                           size_t                n,
-                                           distance_t            radio = 0);
-
 distance_t update_step(che* mesh, const distance_t* dist, const index_t& he);
-
-void normalize_ptp(distance_t* dist, const size_t& n);
-
 
 }  // namespace gproshan
 
